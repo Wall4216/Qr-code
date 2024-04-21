@@ -14,13 +14,20 @@ namespace AmirhanovExam.Models
     
     public partial class Ingridients
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Ingridients()
+        {
+            this.IngridientMenu = new HashSet<IngridientMenu>();
+        }
+    
         public int IngridientId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Count { get; set; }
+        public int Count { get; set; }
         public int SuplierId { get; set; }
     
-        public virtual IngridientMenu IngridientMenu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<IngridientMenu> IngridientMenu { get; set; }
         public virtual Suplier Suplier { get; set; }
     }
 }

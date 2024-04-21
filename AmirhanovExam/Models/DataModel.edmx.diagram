@@ -4,20 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1b44d9c86293415f8111bc3f6015ef43" Name="Diagram1">
+      <Diagram DiagramId="17338742c16140229d1c61eef38a050c" Name="Diagram1">
         <EntityTypeShape EntityType="Amirhanov_ExamModel.Employee" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="Amirhanov_ExamModel.IngridientMenu" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Amirhanov_ExamModel.Ingridients" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Amirhanov_ExamModel.Ingridients" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Amirhanov_ExamModel.Menu" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Amirhanov_ExamModel.MenuEmployee" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Amirhanov_ExamModel.Role" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Amirhanov_ExamModel.Suplier" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="Amirhanov_ExamModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Amirhanov_ExamModel.Suplier" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="Amirhanov_ExamModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Amirhanov_ExamModel.User" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
         <AssociationConnector Association="Amirhanov_ExamModel.FK_Employee_Role" ManuallyRouted="false" />
         <AssociationConnector Association="Amirhanov_ExamModel.FK_MenuEmployee_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="Amirhanov_ExamModel.FK_IngridientMenu_Ingridients" ManuallyRouted="false" />
         <AssociationConnector Association="Amirhanov_ExamModel.FK_IngridientMenu_Menu" ManuallyRouted="false" />
-        <AssociationConnector Association="Amirhanov_ExamModel.FK_Ingridients_IngridientMenu" ManuallyRouted="false" />
         <AssociationConnector Association="Amirhanov_ExamModel.FK_Ingridients_Suplier" ManuallyRouted="false" />
         <AssociationConnector Association="Amirhanov_ExamModel.FK_Menu_User" ManuallyRouted="false" />
         <AssociationConnector Association="Amirhanov_ExamModel.FK_MenuEmployee_Menu" ManuallyRouted="false" />

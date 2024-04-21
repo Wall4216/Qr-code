@@ -42,7 +42,8 @@ namespace AmirhanovExam.Pages
             }
 
             App.loggedEmployee = employee;
-            App.image = CreateQrCode(employee.Login);
+            
+            App.image = CreateQrCode(employee.Name);
 
             if (employee.RoleId == 1)
             {
@@ -57,12 +58,7 @@ namespace AmirhanovExam.Pages
 
         private BitmapImage CreateQrCode(string code)
         {
-            var encoder = new QRCodeEncoder
-            {
-                QRCodeScale = 6,
-                QRCodeVersion = 7,
-                QRCodeErrorCorrect = QRCodeEncoder.ERROR_CORRECTION.L
-            };
+            var encoder = new QRCodeEncoder();
 
             Bitmap bitmap = encoder.Encode(code);
 

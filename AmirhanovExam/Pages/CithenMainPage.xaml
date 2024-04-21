@@ -12,6 +12,7 @@
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
             <Button Content="Добавление меню" Margin="2" Click="AddButton_Click"></Button>
             <Button Content="Просмотр ингридиентов" Margin="2" Click="ShowIngridientsButton_Click_1"></Button>
+            <Button Content="Просмотр меню" Margin="2" Click="ShowMenuButton_Click"></Button>
         </StackPanel>
     </Grid>
 </Page>

@@ -18,7 +18,7 @@ namespace AmirhanovExam.Models
         public int IngridientId { get; set; }
         public int MenuId { get; set; }
     
-        public virtual Menu Menu { get; set; }
         public virtual Ingridients Ingridients { get; set; }
+        public virtual Menu Menu { get; set; }
     }
 }

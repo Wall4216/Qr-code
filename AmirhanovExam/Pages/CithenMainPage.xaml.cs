@@ -34,5 +34,10 @@ namespace AmirhanovExam.Pages
         {
             NavigationService.Navigate(new IngridientsPage());
         }
+
+        private void ShowMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MenuPage());
+        }
     }
 }

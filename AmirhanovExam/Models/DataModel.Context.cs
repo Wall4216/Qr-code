@@ -13,10 +13,10 @@ namespace AmirhanovExam.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Amirhanov_ExamEntities : DbContext
+    public partial class EntityExam : DbContext
     {
-        public Amirhanov_ExamEntities()
-            : base("name=Amirhanov_ExamEntities")
+        public EntityExam()
+            : base("name=EntityExam")
         {
         }
     

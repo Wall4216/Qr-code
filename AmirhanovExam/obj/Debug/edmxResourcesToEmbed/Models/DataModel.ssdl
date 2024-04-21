@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Amirhanov_ExamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IngridientMenu">
+    <Key>
+      <PropertyRef Name="IngridientMenuId" />
+    </Key>
+    <Property Name="IngridientMenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IngridientId" Type="int" Nullable="false" />
+    <Property Name="MenuId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ingridients">
+    <Key>
+      <PropertyRef Name="IngridientId" />
+    </Key>
+    <Property Name="IngridientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Description" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="SuplierId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Weight" Type="float" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MenuEmployee">
+    <Key>
+      <PropertyRef Name="MenuEmployeeId" />
+    </Key>
+    <Property Name="MenuEmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuId" Type="int" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Suplier">
+    <Key>
+      <PropertyRef Name="SuplierId" />
+    </Key>
+    <Property Name="SuplierId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Addres" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_Employee_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IngridientMenu_Ingridients">
+    <End Role="Ingridients" Type="Self.Ingridients" Multiplicity="1" />
+    <End Role="IngridientMenu" Type="Self.IngridientMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingridients">
+        <PropertyRef Name="IngridientId" />
+      </Principal>
+      <Dependent Role="IngridientMenu">
+        <PropertyRef Name="IngridientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IngridientMenu_Menu">
+    <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+    <End Role="IngridientMenu" Type="Self.IngridientMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="MenuId" />
+      </Principal>
+      <Dependent Role="IngridientMenu">
+        <PropertyRef Name="MenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ingridients_Suplier">
+    <End Role="Suplier" Type="Self.Suplier" Multiplicity="1" />
+    <End Role="Ingridients" Type="Self.Ingridients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suplier">
+        <PropertyRef Name="SuplierId" />
+      </Principal>
+      <Dependent Role="Ingridients">
+        <PropertyRef Name="SuplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Menu_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuEmployee_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="MenuEmployee" Type="Self.MenuEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="MenuEmployee">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuEmployee_Menu">
+    <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+    <End Role="MenuEmployee" Type="Self.MenuEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="MenuId" />
+      </Principal>
+      <Dependent Role="MenuEmployee">
+        <PropertyRef Name="MenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Amirhanov_ExamModelStoreContainer">
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IngridientMenu" EntityType="Self.IngridientMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ingridients" EntityType="Self.Ingridients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MenuEmployee" EntityType="Self.MenuEmployee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Suplier" EntityType="Self.Suplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IngridientMenu_Ingridients" Association="Self.FK_IngridientMenu_Ingridients">
+      <End Role="Ingridients" EntitySet="Ingridients" />
+      <End Role="IngridientMenu" EntitySet="IngridientMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IngridientMenu_Menu" Association="Self.FK_IngridientMenu_Menu">
+      <End Role="Menu" EntitySet="Menu" />
+      <End Role="IngridientMenu" EntitySet="IngridientMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ingridients_Suplier" Association="Self.FK_Ingridients_Suplier">
+      <End Role="Suplier" EntitySet="Suplier" />
+      <End Role="Ingridients" EntitySet="Ingridients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menu_User" Association="Self.FK_Menu_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuEmployee_Employee" Association="Self.FK_MenuEmployee_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="MenuEmployee" EntitySet="MenuEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuEmployee_Menu" Association="Self.FK_MenuEmployee_Menu">
+      <End Role="Menu" EntitySet="Menu" />
+      <End Role="MenuEmployee" EntitySet="MenuEmployee" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

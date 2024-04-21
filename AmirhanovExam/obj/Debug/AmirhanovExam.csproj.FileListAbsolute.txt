@@ -32,3 +32,5 @@ C:\Users\Veronia\source\repos\AmirhanovExam\AmirhanovExam\obj\Debug\AmirhanovExa
 C:\Users\Veronia\source\repos\AmirhanovExam\AmirhanovExam\obj\Debug\Amirhano.65BFFBD6.Up2Date
 C:\Users\Veronia\source\repos\AmirhanovExam\AmirhanovExam\obj\Debug\AmirhanovExam.exe
 C:\Users\Veronia\source\repos\AmirhanovExam\AmirhanovExam\obj\Debug\AmirhanovExam.pdb
+C:\Users\Veronia\source\repos\AmirhanovExam\AmirhanovExam\obj\Debug\Pages\MenuPage.g.cs
+C:\Users\Veronia\source\repos\AmirhanovExam\AmirhanovExam\obj\Debug\Pages\MenuPage.baml

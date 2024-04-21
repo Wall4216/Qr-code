@@ -15,7 +15,7 @@ namespace AmirhanovExam
     /// </summary>
     public partial class App : Application
     {
-        public static Amirhanov_ExamEntities DB = new Amirhanov_ExamEntities();
+        public static EntityExam DB = new EntityExam();
         public static Employee loggedEmployee = new Employee();
         public static BitmapImage image = new BitmapImage();
     }

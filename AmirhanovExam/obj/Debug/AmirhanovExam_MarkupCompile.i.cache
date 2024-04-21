@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Veronia\source\repos\AmirhanovExam\AmirhanovExam\App.xaml
-7-1952330070
-21663793987
-241891779991
+81767018828
+21376317571
+262092046922
 201467401607
-MainWindow.xaml;Pages\AddEmployeePage.xaml;Pages\AddMenuPage.xaml;Pages\CithenMainPage.xaml;Pages\HRMainPage.xaml;Pages\IngridientsPage.xaml;Pages\LoginPage.xaml;
+MainWindow.xaml;Pages\AddEmployeePage.xaml;Pages\AddMenuPage.xaml;Pages\CithenMainPage.xaml;Pages\HRMainPage.xaml;Pages\IngridientsPage.xaml;Pages\LoginPage.xaml;Pages\MenuPage.xaml;
 
-True
+False
 

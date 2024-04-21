@@ -30,7 +30,7 @@
           <Property Name="IngridientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="Description" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="Count" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
           <Property Name="SuplierId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Menu">
@@ -100,6 +100,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_IngridientMenu_Ingridients">
+          <End Role="Ingridients" Type="Self.Ingridients" Multiplicity="1" />
+          <End Role="IngridientMenu" Type="Self.IngridientMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingridients">
+              <PropertyRef Name="IngridientId" />
+            </Principal>
+            <Dependent Role="IngridientMenu">
+              <PropertyRef Name="IngridientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_IngridientMenu_Menu">
           <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
           <End Role="IngridientMenu" Type="Self.IngridientMenu" Multiplicity="*" />
@@ -109,18 +121,6 @@
             </Principal>
             <Dependent Role="IngridientMenu">
               <PropertyRef Name="MenuId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ingridients_IngridientMenu">
-          <End Role="IngridientMenu" Type="Self.IngridientMenu" Multiplicity="1" />
-          <End Role="Ingridients" Type="Self.Ingridients" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="IngridientMenu">
-              <PropertyRef Name="IngridientMenuId" />
-            </Principal>
-            <Dependent Role="Ingridients">
-              <PropertyRef Name="IngridientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -186,13 +186,13 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
+          <AssociationSet Name="FK_IngridientMenu_Ingridients" Association="Self.FK_IngridientMenu_Ingridients">
+            <End Role="Ingridients" EntitySet="Ingridients" />
+            <End Role="IngridientMenu" EntitySet="IngridientMenu" />
+          </AssociationSet>
           <AssociationSet Name="FK_IngridientMenu_Menu" Association="Self.FK_IngridientMenu_Menu">
             <End Role="Menu" EntitySet="Menu" />
             <End Role="IngridientMenu" EntitySet="IngridientMenu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ingridients_IngridientMenu" Association="Self.FK_Ingridients_IngridientMenu">
-            <End Role="IngridientMenu" EntitySet="IngridientMenu" />
-            <End Role="Ingridients" EntitySet="Ingridients" />
           </AssociationSet>
           <AssociationSet Name="FK_Ingridients_Suplier" Association="Self.FK_Ingridients_Suplier">
             <End Role="Suplier" EntitySet="Suplier" />
@@ -235,8 +235,8 @@
           <Property Name="IngridientMenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IngridientId" Type="Int32" Nullable="false" />
           <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ingridients" Relationship="Self.FK_IngridientMenu_Ingridients" FromRole="IngridientMenu" ToRole="Ingridients" />
           <NavigationProperty Name="Menu" Relationship="Self.FK_IngridientMenu_Menu" FromRole="IngridientMenu" ToRole="Menu" />
-          <NavigationProperty Name="Ingridients" Relationship="Self.FK_Ingridients_IngridientMenu" FromRole="IngridientMenu" ToRole="Ingridients" />
         </EntityType>
         <EntityType Name="Ingridients">
           <Key>
@@ -245,9 +245,9 @@
           <Property Name="IngridientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Count" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
           <Property Name="SuplierId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="IngridientMenu" Relationship="Self.FK_Ingridients_IngridientMenu" FromRole="Ingridients" ToRole="IngridientMenu" />
+          <NavigationProperty Name="IngridientMenu" Relationship="Self.FK_IngridientMenu_Ingridients" FromRole="Ingridients" ToRole="IngridientMenu" />
           <NavigationProperty Name="Suplier" Relationship="Self.FK_Ingridients_Suplier" FromRole="Ingridients" ToRole="Suplier" />
         </EntityType>
         <EntityType Name="Menu">
@@ -337,6 +337,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_IngridientMenu_Ingridients">
+          <End Role="Ingridients" Type="Self.Ingridients" Multiplicity="1" />
+          <End Role="IngridientMenu" Type="Self.IngridientMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingridients">
+              <PropertyRef Name="IngridientId" />
+            </Principal>
+            <Dependent Role="IngridientMenu">
+              <PropertyRef Name="IngridientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_IngridientMenu_Menu">
           <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
           <End Role="IngridientMenu" Type="Self.IngridientMenu" Multiplicity="*" />
@@ -346,18 +358,6 @@
             </Principal>
             <Dependent Role="IngridientMenu">
               <PropertyRef Name="MenuId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ingridients_IngridientMenu">
-          <End Role="IngridientMenu" Type="Self.IngridientMenu" Multiplicity="1" />
-          <End Role="Ingridients" Type="Self.Ingridients" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="IngridientMenu">
-              <PropertyRef Name="IngridientMenuId" />
-            </Principal>
-            <Dependent Role="Ingridients">
-              <PropertyRef Name="IngridientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -397,7 +397,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Amirhanov_ExamEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EntityExam" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employee" EntityType="Self.Employee" />
           <EntitySet Name="IngridientMenu" EntityType="Self.IngridientMenu" />
           <EntitySet Name="Ingridients" EntityType="Self.Ingridients" />
@@ -415,13 +415,13 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="MenuEmployee" EntitySet="MenuEmployee" />
           </AssociationSet>
+          <AssociationSet Name="FK_IngridientMenu_Ingridients" Association="Self.FK_IngridientMenu_Ingridients">
+            <End Role="Ingridients" EntitySet="Ingridients" />
+            <End Role="IngridientMenu" EntitySet="IngridientMenu" />
+          </AssociationSet>
           <AssociationSet Name="FK_IngridientMenu_Menu" Association="Self.FK_IngridientMenu_Menu">
             <End Role="Menu" EntitySet="Menu" />
             <End Role="IngridientMenu" EntitySet="IngridientMenu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ingridients_IngridientMenu" Association="Self.FK_Ingridients_IngridientMenu">
-            <End Role="IngridientMenu" EntitySet="IngridientMenu" />
-            <End Role="Ingridients" EntitySet="Ingridients" />
           </AssociationSet>
           <AssociationSet Name="FK_Ingridients_Suplier" Association="Self.FK_Ingridients_Suplier">
             <End Role="Suplier" EntitySet="Suplier" />
@@ -441,7 +441,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Amirhanov_ExamModelStoreContainer" CdmEntityContainer="Amirhanov_ExamEntities">
+        <EntityContainerMapping StorageEntityContainer="Amirhanov_ExamModelStoreContainer" CdmEntityContainer="EntityExam">
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="Amirhanov_ExamModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
